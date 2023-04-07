@@ -29,23 +29,23 @@
                         <div class="w-full mt-4">
                             <form @submit.prevent="register" class="form-horizontal w-3/4 mx-auto" >
                                 <div class="flex flex-col mt-4">
-                                    <input id="name" v-model="form.name"  type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="name" placeholder="Name">
+                                    <input id="name" required v-model="form.name"  type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="name" placeholder="Name">
                                 </div>
                                 <div class="flex flex-col mt-4">
-                                    <input id="email" v-model="form.email"  type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="email" placeholder="Email">
+                                    <input id="email" required v-model="form.email"  type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="email" placeholder="Email">
                                 </div>
                                 <div class="flex flex-col mt-4">
-                                    <input id="password" v-model="form.password" type="password" class="flex-grow h-8 px-2 rounded border border-grey-400" name="password" required placeholder="Password">
+                                    <input id="password" required v-model="form.password" type="password" class="flex-grow h-8 px-2 rounded border border-grey-400" name="password"  placeholder="Password">
                                 </div>
                                 <div class="flex flex-col mt-4">
-                                    <input  type="password" v-model="form.c_password" class="flex-grow h-8 px-2 rounded border border-grey-400" name="c_password" required placeholder="Confirme Password">
+                                    <input  type="password" required v-model="form.c_password" class="flex-grow h-8 px-2 rounded border border-grey-400" name="c_password"  placeholder="Confirme Password">
                                 </div>
                                 <div class="flex items-center mt-4">
-                                    <input type="checkbox" name="remember" id="remember" class="mr-2"> <label for="remember" class="text-sm text-grey-dark">Remember Me</label>
+                                    <input type="checkbox" required name="remember" id="remember" class="mr-2"> <label for="remember" class="text-sm text-grey-dark">Remember Me</label>
                                 </div>
                                 <div class="flex flex-col mt-8">
                                     <button type="submit" value="register"  class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded">
-                                        Login
+                                        register
                                     </button>
                                 </div>
                             </form>

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\RealstateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(AuthController::class)->group(function(){
     Route::post('register', 'register');
     Route::post('login', 'login');
+});
+// Route::apiResource('realstate', RealstateController::class);
+Route::controller(RealstateController::class)->group(function(){
+    Route::post('add', 'store');
+    Route::get('all', 'index');
+    Route::put('update', 'update');
+    Route::delete('delete', 'delete');
 });

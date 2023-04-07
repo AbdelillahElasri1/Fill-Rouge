@@ -9,8 +9,9 @@
     let form = reactive({
         email: '',
         password: '',
+        error: '',
     })
-    let error = ref('')
+    
     const login = async() =>{
         await axios.post('http://127.0.0.1:8000/api/login', form)
         .then(response =>{
@@ -19,9 +20,9 @@
             if (response.data.success) {
                 localStorage.setItem('token', response.data.data.token)
                 if((response.data.user.role) == 0){
-                    router.push('/about')
-                } else {
                     router.push('/')
+                } else {
+                    router.push('/about')
                 }
             } else {
                 error.value = response.data.message;
@@ -40,13 +41,14 @@
                         <div class="w-full mt-4">
                             <form @submit.prevent="login" class="form-horizontal w-3/4 mx-auto" >
                                 <div class="flex flex-col mt-4">
-                                    <input id="email" v-model="form.email" type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="email" placeholder="Email">
+                                    <input id="email" required v-model="form.email" type="text" class="flex-grow h-8 px-2 border rounded border-grey-400" name="email" placeholder="Email">
+                                    
                                 </div>
                                 <div class="flex flex-col mt-4">
-                                    <input id="password" v-model="form.password" type="password" class="flex-grow h-8 px-2 rounded border border-grey-400" name="password" required placeholder="Password">
+                                    <input id="password" required v-model="form.password" type="password" class="flex-grow h-8 px-2 rounded border border-grey-400" name="password"  placeholder="Password">
                                 </div>
                                 <div class="flex items-center mt-4">
-                                    <input type="checkbox" name="remember" id="remember" class="mr-2"> <label for="remember" class="text-sm text-grey-dark">Remember Me</label>
+                                    <input type="checkbox" required name="remember" id="remember" class="mr-2"> <label for="remember" class="text-sm text-grey-dark">Remember Me</label>
                                 </div>
                                 <div class="flex flex-col mt-8">
                                     <button type="submit" value="login" class="bg-blue-500 hover:bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded">
@@ -63,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="hidden md:block md:w-1/2 rounded-r-lg" style="background: url('https://images.unsplash.com/photo-1515965885361-f1e0095517ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80'); background-size: cover; background-position: center center;"></div>
+                <div class="hidden md:block md:w-1/2 rounded-r-lg" style="background-image: url('https://images.unsplash.com/photo-1515965885361-f1e0095517ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80'); background-size: cover; background-position: center center;"></div>
             </div>
         </div>
     </div>
