@@ -12,8 +12,8 @@
                 </div>
                 <div class=" ">
                     <ul class="flex gap-6 align-middle leading-10">
-                    <li class="">Buy</li>
-                    <li class="">Rent</li>
+                    <li class=""><a href="/">Buy</a></li>
+                    <li class=""><a href="/about">Sell</a></li>
                     <li>Mortgage</li>
                     <li>Local Scoop</li>
                     <li>More</li>
