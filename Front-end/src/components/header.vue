@@ -14,7 +14,7 @@
                     <ul class="flex gap-6 align-middle leading-10">
                     <li class=""><a href="/">Buy</a></li>
                     <li class=""><a href="/about">Sell</a></li>
-                    <li>Mortgage</li>
+                    <li><a href="/show">Mortgage</a></li>
                     <li>Local Scoop</li>
                     <li>More</li>
                     </ul>
@@ -24,7 +24,7 @@
                 <div class="savedNsearches">
                     <ul class="flex gap-6 leading-10">
                         <li>Saved Homes</li>
-                        <li>Saved Searches</li>
+                        <li>Dashboard</li>
                     </ul>
                 </div>
                 <div class="mr-8">

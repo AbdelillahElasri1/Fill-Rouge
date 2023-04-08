@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import login from "../views/auth/login.vue";
 import register from "../views/auth/register.vue";
+import showRealstate from '../components/HomeViews/realstateShow.vue'
 
 
 
@@ -15,6 +16,11 @@ const router = createRouter({
       meta:{
         requiresAuth: true
       }
+    },
+    {
+      path: '/show',
+      name: 'show',
+      component: showRealstate
     },
     //login route
     {
@@ -39,7 +45,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/SellView.vue')
     },
     
   ]
