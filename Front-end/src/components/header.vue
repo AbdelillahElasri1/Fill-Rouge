@@ -24,7 +24,7 @@
                 <div class="savedNsearches">
                     <ul class="flex gap-6 leading-10">
                         <li>Saved Homes</li>
-                        <li>Dashboard</li>
+                        <li><a href="/listhome">List Home</a></li>
                     </ul>
                 </div>
                 <div class="mr-8">

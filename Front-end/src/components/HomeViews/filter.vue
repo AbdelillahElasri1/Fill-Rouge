@@ -4,7 +4,7 @@
 
 <template>
     <!-- search bar and filter -->
-    <div class="flex justify-center gap-12 mt-6">
+    <div class="flex justify-center gap-6 mt-6">
       <div class="relative text-gray-600">
         <input type="search" name="serch" placeholder="Search" class="bg-gray-200 h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
         <button type="submit"  class="absolute right-0 top-0 mt-3 mr-4">

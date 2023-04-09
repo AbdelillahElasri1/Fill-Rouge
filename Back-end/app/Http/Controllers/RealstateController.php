@@ -30,15 +30,16 @@ class RealstateController extends Controller
         }
         //$request->file('image')->store('image');
         $result = $realstate->save();
-        if ($result) {
-            return [
-                'message' => 'realstate is added successfully'
-            ];
-        } else {
-            return [
-                'message' => 'realstate is not added'
-            ];
-        }
+        return response()->json(['message' => 'realstate is added successfully']);
+        // if ($result) {
+        //     return [
+        //         'message' => 'realstate is added successfully'
+        //     ];
+        // } else {
+        //     return [
+        //         'message' => 'realstate is not added'
+        //     ];
+        // }
     }
 
     /**

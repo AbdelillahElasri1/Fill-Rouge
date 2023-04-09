@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import login from "../views/auth/login.vue";
 import register from "../views/auth/register.vue";
 import showRealstate from '../components/HomeViews/realstateShow.vue'
+import listHome from '../views/listHome.vue'
 
 
 
@@ -16,6 +17,11 @@ const router = createRouter({
       meta:{
         requiresAuth: true
       }
+    },
+    {
+      path: '/listhome',
+      name: 'listHome',
+      component: listHome
     },
     {
       path: '/show',

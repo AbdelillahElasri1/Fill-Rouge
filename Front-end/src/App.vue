@@ -12,11 +12,12 @@ import navbarbuttom from './components/footer.vue'
    <!-- <div>
     <router-link to="/login">Login</router-link>
   </div> -->
+
   <navbar />
  
   
   
   <RouterView />
-  <!-- <navbarbuttom /> -->
+  <navbarbuttom />
 </template>
 
