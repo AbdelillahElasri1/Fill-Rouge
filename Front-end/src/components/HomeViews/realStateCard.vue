@@ -2,7 +2,7 @@
     import Foooter from '../footer.vue'
 </script>
 <template>
-    <div class="flex gap-6 flex-wrap text-left bg-gray-100 justify-center m-8 p-4 w-2/3 overflow-y-scroll h-[900px]">
+    <div class="flex gap-6 flex-wrap text-left bg-white justify-center m-8 p-4 w-2/3 scrollbar-hide overflow-y-scroll h-[900px]">
       <!-- card 1 -->
         <div class="w-[250px] h-[300px]">
           <div>

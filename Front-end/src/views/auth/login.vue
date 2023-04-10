@@ -22,7 +22,7 @@
                 if((response.data.user.role) == 0){
                     router.push('/')
                 } else {
-                    router.push('/about')
+                    router.push('/dashboard')
                 }
             } else {
                 error.value = response.data.message;

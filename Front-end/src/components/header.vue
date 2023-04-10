@@ -2,7 +2,7 @@
 
 </script>
 <template>
-    <header>
+    <header class="">
         
         <nav class="flex gap-6 items-center justify-between h-[60px] bg-[#5483ef] text-[#fff] align-middle leading-6" >
             <div class="flex gap-10">
@@ -23,7 +23,7 @@
             <div class="flex gap-10">
                 <div class="savedNsearches">
                     <ul class="flex gap-6 leading-10">
-                        <li>Saved Homes</li>
+                        <li><a href="/savedHome">Saved Homes</a></li>
                         <li><a href="/listhome">List Home</a></li>
                     </ul>
                 </div>

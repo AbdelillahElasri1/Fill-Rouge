@@ -4,6 +4,7 @@ import login from "../views/auth/login.vue";
 import register from "../views/auth/register.vue";
 import showRealstate from '../components/HomeViews/realstateShow.vue'
 import listHome from '../views/listHome.vue'
+import dashboard from '../views/dashboard/dashboard.vue'
 
 
 
@@ -17,6 +18,11 @@ const router = createRouter({
       meta:{
         requiresAuth: true
       }
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: dashboard,
     },
     {
       path: '/listhome',
