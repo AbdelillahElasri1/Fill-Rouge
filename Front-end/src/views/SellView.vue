@@ -1,6 +1,7 @@
 <script setup>
   import {useRouter} from 'vue-router'
   import SellForm from '../components/SellView/sell.vue'
+  import navbar from '../components/header.vue'
 
   const router = useRouter()
   const logout = () => {
@@ -9,6 +10,7 @@
   }
 </script>
 <template>
+  <navbar />
   <div class="flex justify-center mt-8">
       <SellForm />
   </div>

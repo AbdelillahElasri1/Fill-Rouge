@@ -1,7 +1,8 @@
 <script setup>
-
+    import navbar from '../header.vue'
 </script>
 <template>
+    <navbar />
     <div class="flex gap-12 mt-4 justify-evenly">
         <!-- photos -->
             <div class="carousel rounded-box w-[53%] h-96 ">

@@ -13,7 +13,7 @@ import navbarbuttom from './components/footer.vue'
     <router-link to="/login">Login</router-link>
   </div> -->
 
-  <navbar />
+  <!-- <navbar /> -->
  
   
   

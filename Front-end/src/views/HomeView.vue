@@ -4,6 +4,7 @@
     import { useRouter } from 'vue-router'
     import search from '../components/HomeViews/filter.vue'
     import realStateCard from '../components/HomeViews/realStateCard.vue'
+    import navbar from '../components/header.vue'
     const router = useRouter()
     let nom = reactive({
       info: ''
@@ -16,6 +17,7 @@
 
 
 <template>
+  <navbar />
   <main>
     <!-- components search bar start -->
     <search />
