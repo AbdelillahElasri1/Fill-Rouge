@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Realstate extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['titre','price','street', 'image'];
 }

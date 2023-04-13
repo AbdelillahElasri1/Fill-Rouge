@@ -1,5 +1,7 @@
 <script setup>
 	import searchbar from './searchbar.vue'
+  import {useRouter} from 'vue-router'
+  
 </script>
 <template>
 	<!-- Header -->

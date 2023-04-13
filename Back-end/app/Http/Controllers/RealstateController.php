@@ -53,18 +53,18 @@ class RealstateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request , string $id)
     {
         
-        $realstate = Realstate::findOrFail($request->id);
-        $realstate->titre = $request->titre;
-        $realstate->price = $request->price;
-        $realstate->street = $request->street;
+        $update = Realstate::findOrFail($id);
+        $update->titre = $request->titre;
+        $update->price = $request->price;
+        $update->street = $request->street;
         if($request->hasFile('image')){
-            $realstate['image'] = $request->file('image')->store('image', 'public');
+            $update['image'] = $request->file('image')->store('image', 'public');
         }
         
-        $result = $realstate->save();
+        $result = $update->save();
         if ($result) {
             return ['result' => 'Device updated successfully'];
         } else {
@@ -75,9 +75,9 @@ class RealstateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Realstate $realstate)
+    public function destroy(string $id)
     {
-        $realstate = Realstate::find($realstate);
+        $realstate = Realstate::find($id);
         $result = $realstate->delete();
 
         if ($result) {

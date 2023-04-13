@@ -5,6 +5,8 @@ import register from "../views/auth/register.vue";
 import showRealstate from '../components/HomeViews/realstateShow.vue'
 import listHome from '../views/listHome.vue'
 import dashboard from '../views/dashboard/dashboard.vue'
+import clientTable from '../components/dashboard/clientTable.vue'
+import socialTraffic from '../components/dashboard/socialTraffic.vue'
 
 
 
@@ -23,6 +25,16 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: dashboard,
+    },
+    {
+      path: '/clientTable',
+      name: 'clientTable',
+      component: clientTable
+    },
+    {
+      path: '/socialtraffic',
+      name: 'socialtraffic',
+      component: socialTraffic
     },
     {
       path: '/listhome',
