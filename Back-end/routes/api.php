@@ -29,6 +29,6 @@ Route::controller(AuthController::class)->group(function(){
 Route::controller(RealstateController::class)->group(function(){
     Route::post('add', 'store');
     Route::get('all', 'index');
-    Route::put('update/{id}', 'update');
+    Route::put('edit/{id}', 'update');
     Route::delete('delete/{id}', 'destroy');
 });

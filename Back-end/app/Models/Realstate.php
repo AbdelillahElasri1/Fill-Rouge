@@ -9,5 +9,5 @@ class Realstate extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titre','price','street', 'image'];
+    protected $fillables = ['titre','price','street', 'image'];
 }

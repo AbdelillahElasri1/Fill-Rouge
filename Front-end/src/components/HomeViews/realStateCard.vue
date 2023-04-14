@@ -1,128 +1,45 @@
 <script setup>
+    import { ref, reactive, onMounted } from 'vue'
     import Foooter from '../footer.vue'
+    import axios from 'axios';
+
+   const realstates = ref([])
+    const fetchData = () => {
+      axios.get('http://127.0.0.1:8000/api/all')
+      .then(response => {
+        realstates.value = response.data
+        console.log(response)
+      })
+      .catch((error) => console.log(error))
+    }
+    onMounted(() => {
+      fetchData()
+    })
+   
+
+    
+
+
+    
 </script>
 <template>
     <div class="flex gap-6 flex-wrap text-left bg-white justify-center m-8 p-4 w-2/3 scrollbar-hide overflow-y-scroll h-[900px]">
       <!-- card 1 -->
-        <div class="w-[250px] h-[300px]">
+        <div v-for="realstate in realstates" class="w-[250px] h-[300px]">
           <div>
-            <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/8.png?raw=true" class="w-[250px] h-[200px]" alt="">
+            <img :src="`http://localhost:8000/storage/${realstate.image}`" class="w-[250px] h-[200px]" alt="">
           </div>
           <div>
-            <strong class="pl-4">$220000</strong>
+            <strong class="pl-4">{{ realstate.price }}</strong>
           </div>
           <div>
-            <p class="pl-4">titre</p>
+            <p class="pl-4">{{realstate.titre}}</p>
           </div>
           <div>
-            <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-          </div>
-        </div>
-        <!-- card 1 -->
-        <div class="w-[250px] h-[300px]">
-          <div>
-            <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/7.png?raw=true" class="w-[250px] h-[200px]" alt="">
-          </div>
-          <div>
-            <strong class="pl-4">$220000</strong>
-          </div>
-          <div>
-            <p class="pl-4">titre</p>
-          </div>
-          <div>
-            <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
+            <p class="pl-4">{{realstate.street}}</p>
           </div>
         </div>
-        <!-- card 1 -->
-        <div class="w-[250px] h-[300px]">
-          <div>
-            <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/6.png?raw=true" class="w-[250px] h-[200px]" alt="">
-          </div>
-          <div>
-            <strong class="pl-4">$220000</strong>
-          </div>
-          <div>
-            <p class="pl-4">titre</p>
-          </div>
-          <div>
-            <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-          </div>
-        </div>
-        <!-- card 1 -->
-        <div class="w-[250px] h-[300px]">
-          <div>
-            <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/2.png?raw=true" class="w-[250px] h-[200px]" alt="">
-          </div>
-          <div>
-            <strong class="pl-4">$220000</strong>
-          </div>
-          <div>
-            <p class="pl-4">titre</p>
-          </div>
-          <div>
-            <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-          </div>
-        </div>
-        <!-- card 1 -->
-        <div class="w-[250px] h-[300px]">
-          <div>
-            <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/4.png?raw=true" class="w-[250px] h-[200px]" alt="">
-          </div>
-          <div>
-            <strong class="pl-4">$220000</strong>
-          </div>
-          <div>
-            <p class="pl-4">titre</p>
-          </div>
-          <div>
-            <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-          </div>
-        </div>
-        <!-- card 1 -->
-        <div class="w-[250px] h-[300px]">
-          <div>
-            <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/1.png?raw=true" class="w-[250px] h-[200px]" alt="">
-          </div>
-          <div>
-            <strong class="pl-4">$220000</strong>
-          </div>
-          <div>
-            <p class="pl-4">titre</p>
-          </div>
-          <div>
-            <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-          </div>
-        </div>
-        <!-- card 1 -->
-        <div class="w-[250px] h-[300px]">
-          <div>
-            <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/8.png?raw=true " class="w-[250px] h-[200px]" alt="">
-          </div>
-          <div>
-            <strong class="pl-4">$220000</strong>
-          </div>
-          <div>
-            <p class="pl-4">titre</p>
-          </div>
-          <div>
-            <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-          </div>
-        </div>
-        <!-- card 1 -->
-        <div class="w-[250px] h-[300px]">
-          <div>
-            <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/5.png?raw=true " class="w-[250px] h-[200px]" alt="">
-          </div>
-          <div>
-            <strong class="pl-4">$220000</strong>
-          </div>
-          <div>
-            <p class="pl-4">titre</p>
-          </div>
-          <div>
-            <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-          </div>
-        </div>
+        
         <!-- pagination start -->
 
         <nav aria-label="Page navigation example" class="flex justify-center mb-6">
