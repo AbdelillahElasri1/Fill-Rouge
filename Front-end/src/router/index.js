@@ -42,7 +42,7 @@ const router = createRouter({
       component: listHome
     },
     {
-      path: '/show',
+      path: '/show/:id',
       name: 'show',
       component: showRealstate
     },

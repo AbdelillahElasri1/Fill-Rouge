@@ -1,161 +1,61 @@
 <script setup>
     import navbar from '../components/header.vue'
+    import { ref, reactive, onMounted } from 'vue'
+    import { useRoute } from 'vue-router';
+    // import Foooter from '../footer.vue'
+    import axios from 'axios';
+    import router from '../router';
+    
+    
+
+   const realstates = ref([])
+   const result = ref('')
+    const fetchData = () => {
+      axios.get('http://127.0.0.1:8000/api/all')
+      .then(response => {
+        realstates.value = response.data
+        console.log(response)
+      })
+      .catch((error) => console.log(error))
+    }
+    const deleteData = (id) => {
+      axios.delete('http://127.0.0.1:8000/api/delete/' + id)
+      .then(() => {
+        fetchData();
+      });
+    }
+
+    onMounted(() => {
+      fetchData()
+     
+    })
+   
+
+    
 </script>
 <template>
   <navbar />
     <div class="flex gap-6 flex-wrap text-left justify-center bg-gray-100  m-8 p-4  ">
         <!-- card 1 -->
-          <div class="w-[250px] h-[360px] bg-blue-300">
+          <div v-for="realstate in realstates" class="w-[250px] h-[360px] bg-blue-300">
             <div>
-              <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/8.png?raw=true" class="w-[250px] h-[200px]" alt="">
+              <img  :src="`http://localhost:8000/storage/${realstate.image}`" class="w-[250px] h-[200px]" alt="">
             </div>
             <div>
-              <strong class="pl-4">$220000</strong>
+              <strong class="pl-4">${{ realstate.price }}</strong>
             </div>
             <div>
-              <p class="pl-4">titre</p>
+              <p class="pl-4">{{realstate.titre}}</p>
             </div>
             <div>
-              <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
+              <p class="pl-4">{{realstate.street}}</p>
             </div>
             <div class="flex gap-8 justify-center mt-2">
                 <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
-                <button class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
+                <button @click="deleteData(realstate.id)" class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
             </div>
           </div>
-          <!-- card 1 -->
-          <div class="w-[250px] h-[360px] bg-blue-300">
-            <div>
-              <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/7.png?raw=true" class="w-[250px] h-[200px]" alt="">
-            </div>
-            <div>
-              <strong class="pl-4">$220000</strong>
-            </div>
-            <div>
-              <p class="pl-4">titre</p>
-            </div>
-            <div>
-              <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-            </div>
-            <div class="flex gap-8 justify-center mt-2">
-                <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
-                <button class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
-            </div>
-          </div>
-          <!-- card 1 -->
-          <div class="w-[250px] h-[360px] bg-blue-300">
-            <div>
-              <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/6.png?raw=true" class="w-[250px] h-[200px]" alt="">
-            </div>
-            <div>
-              <strong class="pl-4">$220000</strong>
-            </div>
-            <div>
-              <p class="pl-4">titre</p>
-            </div>
-            <div>
-              <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-            </div>
-            <div class="flex gap-8 justify-center mt-2">
-                <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
-                <button class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
-            </div>
-          </div>
-          <!-- card 1 -->
-          <div class="w-[250px] h-[360px] bg-blue-300">
-            <div>
-              <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/2.png?raw=true" class="w-[250px] h-[200px]" alt="">
-            </div>
-            <div>
-              <strong class="pl-4">$220000</strong>
-            </div>
-            <div>
-              <p class="pl-4">titre</p>
-            </div>
-            <div>
-              <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-            </div>
-            <div class="flex gap-8 justify-center mt-2">
-                <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
-                <button class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
-            </div>
-          </div>
-          <!-- card 1 -->
-          <div class="w-[250px] h-[360px] bg-blue-300">
-            <div>
-              <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/4.png?raw=true" class="w-[250px] h-[200px]" alt="">
-            </div>
-            <div>
-              <strong class="pl-4">$220000</strong>
-            </div>
-            <div>
-              <p class="pl-4">titre</p>
-            </div>
-            <div>
-              <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-            </div>
-            <div class="flex gap-8 justify-center mt-2">
-                <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
-                <button class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
-            </div>
-          </div>
-          <!-- card 1 -->
-          <div class="w-[250px] h-[360px] bg-blue-300">
-            <div>
-              <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/1.png?raw=true" class="w-[250px] h-[200px]" alt="">
-            </div>
-            <div>
-              <strong class="pl-4">$220000</strong>
-            </div>
-            <div>
-              <p class="pl-4">titre</p>
-            </div>
-            <div>
-              <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-            </div>
-            <div class="flex gap-8 justify-center mt-2">
-                <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
-                <button class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
-            </div>
-          </div>
-          <!-- card 1 -->
-          <div class="w-[250px] h-[360px] bg-blue-300">
-            <div>
-              <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/8.png?raw=true " class="w-[250px] h-[200px]" alt="">
-            </div>
-            <div>
-              <strong class="pl-4">$220000</strong>
-            </div>
-            <div>
-              <p class="pl-4">titre</p>
-            </div>
-            <div>
-              <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-            </div>
-            <div class="flex gap-8 justify-center mt-2">
-                <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
-                <button class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
-            </div>
-          </div>
-          <!-- card 1 -->
-          <div class="w-[250px] h-[360px] bg-blue-300">
-            <div>
-              <img src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/5.png?raw=true " class="w-[250px] h-[200px]" alt="">
-            </div>
-            <div>
-              <strong class="pl-4">$220000</strong>
-            </div>
-            <div>
-              <p class="pl-4">titre</p>
-            </div>
-            <div>
-              <p class="pl-4">600 Silliman St San Francisco, CA 94134</p>
-            </div>
-            <div class="flex gap-8 justify-center mt-2">
-                <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
-                <button class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
-            </div>
-          </div>
+          
           <!-- pagination start -->
   
           <nav aria-label="Page navigation example" class="flex justify-center mb-6">

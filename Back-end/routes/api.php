@@ -31,4 +31,6 @@ Route::controller(RealstateController::class)->group(function(){
     Route::get('all', 'index');
     Route::put('edit/{id}', 'update');
     Route::delete('delete/{id}', 'destroy');
+    Route::get('getRealstate/{id}','show');
+    route::get('search/{titre}', 'search');
 });

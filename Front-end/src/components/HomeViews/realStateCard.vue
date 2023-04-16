@@ -2,8 +2,10 @@
     import { ref, reactive, onMounted } from 'vue'
     import Foooter from '../footer.vue'
     import axios from 'axios';
-
+    import { useRouter } from 'vue-router'
+    const router = useRouter()
    const realstates = ref([])
+   const keyword = ref(null)
     const fetchData = () => {
       axios.get('http://127.0.0.1:8000/api/all')
       .then(response => {
@@ -12,9 +14,17 @@
       })
       .catch((error) => console.log(error))
     }
+    const getResults = () => {
+            axios.get('http://127.0.0.1:8000/api/search', { params: { keyword: this.keyword } })
+                .then(response => this.realstates = response.data)
+                .catch(error => {});
+        }
     onMounted(() => {
       fetchData()
     })
+    function show(id){
+        router.push('/show/'+id+'')
+    }
    
 
     
@@ -33,7 +43,11 @@
             <strong class="pl-4">{{ realstate.price }}</strong>
           </div>
           <div>
-            <p class="pl-4">{{realstate.titre}}</p>
+            <!-- <router-link :to="{name: 'show', params:{ id: realstate.id} }"> -->
+              
+              <p @click="show(realstate.id)" class="pl-4">{{realstate.titre}}</p>
+            
+            <!-- </router-link> -->
           </div>
           <div>
             <p class="pl-4">{{realstate.street}}</p>

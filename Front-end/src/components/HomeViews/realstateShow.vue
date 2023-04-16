@@ -1,5 +1,25 @@
 <script setup>
     import navbar from '../header.vue'
+    import axios from 'axios'
+    import { ref, onMounted, computed } from 'vue'
+    import { useRouter } from 'vue-router'
+
+    const route = useRouter();
+    const id = ref('');
+
+    const realstate = ref([])
+    const getRealstate = async (id) => {
+        let response = await axios.get(`http://127.0.0.1:8000/api/getRealstate/`+id)
+        console.log(response);
+        realstate.value = response.data
+    }
+
+    console.log(id);
+
+    onMounted(() => {
+      getRealstate();
+    })
+
 </script>
 <template>
     <navbar />
@@ -73,7 +93,7 @@
                     <p><strong class="text-2xl text-black">$269,0003</strong> bd2 | ba1 | 342 , sqft</p>
                 </div>
                 <div>
-                    <p><strong class="text-xl">Street :</strong> <span class="text-base">19104 Cook Rd, Madill, OK 73446</span></p>
+                    <p><strong class="text-xl">Street :</strong> <span class="text-base">{{realstate.street}}</span></p>
                 </div>
                 <div>
                     <p><strong class="text-xl">Est. payment :</strong> <span class="text-base">$1,518/mo</span> </p>

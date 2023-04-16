@@ -45,9 +45,9 @@ class RealstateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Realstate $realstate)
+    public function show(String $id)
     {
-        //
+        return Realstate::findOrFail($id);
     }
 
     /**
@@ -86,5 +86,9 @@ class RealstateController extends Controller
         } else {
             return 'device not deleted';
         }
+    }
+    public function search($titre){
+        $data = Realstate::where('titre','like', "%". $titre . "%")->get();
+        return response()->json($data);
     }
 }
