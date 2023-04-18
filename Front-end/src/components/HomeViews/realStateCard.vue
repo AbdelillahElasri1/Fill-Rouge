@@ -14,11 +14,7 @@
       })
       .catch((error) => console.log(error))
     }
-    const getResults = () => {
-            axios.get('http://127.0.0.1:8000/api/search', { params: { keyword: this.keyword } })
-                .then(response => this.realstates = response.data)
-                .catch(error => {});
-        }
+    
     onMounted(() => {
       fetchData()
     })
@@ -35,7 +31,7 @@
 <template>
     <div class="flex gap-6 flex-wrap text-left bg-white justify-center m-8 p-4 w-2/3 scrollbar-hide overflow-y-scroll h-[900px]">
       <!-- card 1 -->
-        <div v-for="realstate in realstates" class="w-[250px] h-[300px]">
+        <div v-for="realstate in realstates" :key="fruit" class="w-[250px] h-[300px]">
           <div>
             <img :src="`http://localhost:8000/storage/${realstate.image}`" class="w-[250px] h-[200px]" alt="">
           </div>
