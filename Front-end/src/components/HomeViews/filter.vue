@@ -1,34 +1,32 @@
-<script >
+<script setup>
    import { ref, reactive, onMounted, watch } from 'vue'
 import axios from 'axios';
 import { useRouter } from 'vue-router'
+import { useRealstate } from '@/stores/realstate'
 
-export default {
-  setup() {
+const realstateStore = useRealstate()
+
+
+ 
     const search = ref('')
-    const realstates = ref([])
+    // const realstates = ref([])
     const router = useRouter()
 
     const getRealstate = () => {
       axios.get('http://127.0.0.1:8000/api/search/' + search.value)
         .then(response => {
-          // realstates.value = response.data
-          console.log(realstates.parent);
-          console.log(response);
+            realstateStore.realstates = response.data
+          // console.log(response);
+          // console.log(realstateStore.realstates);
         })
     }
-
     watch(search, () => {
       getRealstate()
     })
 
-    return {
-      search,
-      realstates,
-      getRealstate
-    }
-  }
-}
+    
+  
+
     
     
 </script>

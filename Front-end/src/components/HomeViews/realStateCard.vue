@@ -3,24 +3,25 @@
     import Foooter from '../footer.vue'
     import axios from 'axios';
     import { useRouter } from 'vue-router'
+    import { useRealstate } from '@/stores/realstate'
+
+    const realstateStore = useRealstate()
     const router = useRouter()
-   const realstates = ref([])
-   const keyword = ref(null)
-    const fetchData = () => {
-      axios.get('http://127.0.0.1:8000/api/all')
-      .then(response => {
-        realstates.value = response.data
-        console.log(response)
-      })
-      .catch((error) => console.log(error))
-    }
+  //  const realstates = ref([])
+  //  const keyword = ref(null)
+    // const fetchData = () => {
+    //   axios.get('http://127.0.0.1:8000/api/all')
+    //   .then(response => {
+    //     realstateStore.realstates = response.data
+    //     console.log(response)
+    //   })
+    //   .catch((error) => console.log(error))
+    // }
     
     onMounted(() => {
-      fetchData()
+      realstateStore.fetchData()
     })
-    function show(id){
-        router.push('/show/'+id+'')
-    }
+    
    
 
     
@@ -31,7 +32,7 @@
 <template>
     <div class="flex gap-6 flex-wrap text-left bg-white justify-center m-8 p-4 w-2/3 scrollbar-hide overflow-y-scroll h-[900px]">
       <!-- card 1 -->
-        <div v-for="realstate in realstates" :key="fruit" class="w-[250px] h-[300px]">
+        <div v-for="realstate in realstateStore.realstates" :key="realstate.id" class="w-[250px] h-[300px]">
           <div>
             <img :src="`http://localhost:8000/storage/${realstate.image}`" class="w-[250px] h-[200px]" alt="">
           </div>
@@ -39,11 +40,11 @@
             <strong class="pl-4">{{ realstate.price }}</strong>
           </div>
           <div>
-            <!-- <router-link :to="{name: 'show', params:{ id: realstate.id} }"> -->
-              
-              <p @click="show(realstate.id)" class="pl-4">{{realstate.titre}}</p>
+            <router-link :to="{name: 'show', params:{ id: realstate.id} }">
+              {{ realstate.id }}
+              <p  class="pl-4">{{realstate.titre}}</p>
             
-            <!-- </router-link> -->
+            </router-link>
           </div>
           <div>
             <p class="pl-4">{{realstate.street}}</p>

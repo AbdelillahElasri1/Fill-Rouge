@@ -12,6 +12,7 @@
     "daisyui": "^2.51.5",
     "flowbite": "^1.6.4",
     "material-icons": "^1.13.4",
+    "pinia": "^2.0.0-rc.10",
     "vue": "^3.2.47",
     "vue-material-design-icons": "^5.2.0",
     "vue-router": "^4.1.6",

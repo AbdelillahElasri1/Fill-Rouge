@@ -1,23 +1,30 @@
 <script setup>
     import navbar from '../header.vue'
     import axios from 'axios'
-    import { ref, onMounted, computed } from 'vue'
-    import { useRouter } from 'vue-router'
+    import { ref, reactive, onMounted, computed } from 'vue'
+    import { useRoute } from 'vue-router'
+    import { useRealstate } from '@/stores/realstate'
 
-    const route = useRouter();
-    const id = ref('');
+    const realstateStore = useRealstate() 
+
+    const route = useRoute();
+
+    // const id = ref('');
 
     const realstate = ref([])
-    const getRealstate = async (id) => {
-        let response = await axios.get(`http://127.0.0.1:8000/api/getRealstate/`+id)
+    const getRealstate = async () => {
+        const id = route.params.id
+        let response = await axios.get(`http://127.0.0.1:8000/api/getRealstate/`+ id)
         console.log(response);
-        realstate.value = response.data
+        realstateStore.realstateShow = response.data
+        console.log(realstateStore.realstateShow.street)
     }
 
-    console.log(id);
+    
 
     onMounted(() => {
       getRealstate();
+      realstateStore.fetchData()
     })
 
 </script>
@@ -27,7 +34,7 @@
         <!-- photos -->
             <div class="carousel rounded-box w-[53%] h-96 ">
               <div class="carousel-item">
-                <img class="w-[100%]" src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/1.png?raw=true" alt="Burger" />
+                <img class="w-[100%]" :src="`http://localhost:8000/storage/${realstateStore.realstateShow.image}`" alt="Burger" />
               </div> 
               <div class="carousel-item">
                 <img class="w-[100%]" src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/4.png?raw=true" alt="Burger" />
@@ -90,13 +97,13 @@
             </div>
             <div class="flex flex-col gap-4 mt-4 ">
                 <div>
-                    <p><strong class="text-2xl text-black">$269,0003</strong> bd2 | ba1 | 342 , sqft</p>
+                    <p><strong class="text-2xl text-black">$269,0003</strong> bd2 | ba1 | 342 , {{ realstateStore.realstateShow.titre }}</p>
                 </div>
                 <div>
-                    <p><strong class="text-xl">Street :</strong> <span class="text-base">{{realstate.street}}</span></p>
+                    <p><strong class="text-xl">Street :</strong> <span class="text-base">{{realstateStore.realstateShow.street}}</span></p>
                 </div>
                 <div>
-                    <p><strong class="text-xl">Est. payment :</strong> <span class="text-base">$1,518/mo</span> </p>
+                    <p><strong class="text-xl">Est. payment :</strong> <span class="text-base">{{ realstateStore.realstateShow.price }}</span> </p>
                 </div>
             </div>
             <div class=" mt-6">
