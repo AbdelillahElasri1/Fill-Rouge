@@ -41,16 +41,6 @@ export default {
     let titre = ''
     let price = ''
     let street = ''
-    const showAlert = () => {
-      // Use sweetalert2
-        $swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-    })
-    }
    
    
 
@@ -104,15 +94,15 @@ export default {
             </div>
             <div class="flex flex-col gap-2"> 
                 <!-- <label for="">photo</label> -->
-                <input type="file"  @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
+                <input type="file" required @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
             </div>
             <div class="flex flex-col gap-2"> 
                 <!-- <label for="">photo</label> -->
-                <input type="file"  @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
+                <input type="file" required @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
             </div>
             <div class="flex flex-col gap-2"> 
                 <!-- <label for="">photo</label> -->
-                <input type="file"  @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
+                <input type="file" required @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
             </div>
             
             <!-- <div class="extraOutline p-4 bg-white w-max bg-whtie m-auto rounded-lg">
@@ -129,7 +119,7 @@ export default {
                 </div>
             </div> -->
             <div class="flex gap-8">
-                <button @click="showAlert()" type="submit" value="addRealstate" class="bg-green-500 w-full font-medium text-white px-4 py-3 rounded-lg shadow-lg hover:bg-green-400">Submit</button>
+                <button @click="realstateStore.showAlert()" type="submit" value="addRealstate" class="bg-green-500 w-full font-medium text-white px-4 py-3 rounded-lg shadow-lg hover:bg-green-400">Submit</button>
                 <div class="mt-4"></div>
                 <button @click="cancelAlert" class="w-full font-medium text-green-500 px-4 py-3 rounded-lg border-2 border-green-500 hover:bg-green-400 hover:text-white hover:shadow-xl transition-all duration-500">Cancel</button>
             </div>

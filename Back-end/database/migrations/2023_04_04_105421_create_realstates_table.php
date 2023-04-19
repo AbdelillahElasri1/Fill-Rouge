@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('price');
             $table->string('street');
             $table->string('image');
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
             $table->timestamps();
         });
     }

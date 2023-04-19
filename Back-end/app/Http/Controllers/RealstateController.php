@@ -28,6 +28,15 @@ class RealstateController extends Controller
         if($request->hasFile('image')){
             $realstate['image'] = $request->file('image')->store('image', 'public');
         }
+        if($request->hasFile('image1')){
+            $realstate['image1'] = $request->file('image1')->store('image', 'public');
+        }
+        if($request->hasFile('image2')){
+            $realstate['image2'] = $request->file('image2')->store('image', 'public');
+        }
+        if($request->hasFile('image3')){
+            $realstate['image3'] = $request->file('image3')->store('image', 'public');
+        }
         //$request->file('image')->store('image');
         $result = $realstate->save();
         return response()->json(['message' => 'realstate is added successfully']);

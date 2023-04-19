@@ -17,7 +17,7 @@
         let response = await axios.get(`http://127.0.0.1:8000/api/getRealstate/`+ id)
         console.log(response);
         realstateStore.realstateShow = response.data
-        console.log(realstateStore.realstateShow.street)
+        console.log(realstateStore.realstateShow.image)
     }
 
     
@@ -37,13 +37,13 @@
                 <img class="w-[100%]" :src="`http://localhost:8000/storage/${realstateStore.realstateShow.image}`" alt="Burger" />
               </div> 
               <div class="carousel-item">
-                <img class="w-[100%]" src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/4.png?raw=true" alt="Burger" />
+                <img class="w-[100%]" :src="`http://localhost:8000/storage/${realstateStore.realstateShow.image1}`" alt="Burger" />
               </div> 
               <div class="carousel-item">
-                <img class="w-[100%]" src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/2.png?raw=true" alt="Burger" />
+                <img class="w-[100%]" :src="`http://localhost:8000/storage/${realstateStore.realstateShow.image2}`" alt="Burger" />
               </div> 
               <div class="carousel-item">
-                <img class="w-[100%]" src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/6.png?raw=true" alt="Burger" />
+                <img class="w-[100%]" :src="`http://localhost:8000/storage/${realstateStore.realstateShow.image3}`" alt="Burger" />
               </div> 
               <div class="carousel-item">
                 <img class="w-[100%]" src="https://github.com/kenvantruong/real-estate/blob/master/img-houses/7.png?raw=true" alt="Burger" />
