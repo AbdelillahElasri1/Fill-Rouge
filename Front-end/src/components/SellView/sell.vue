@@ -31,6 +31,8 @@ export default {
     import Foooter from '../footer.vue'
     import router from '../../router';
     import { useRealstate } from '@/stores/realstate'
+    import swal from 'sweetalert2';
+    window.Swal = swal;
 
     const realstateStore = useRealstate()
 
@@ -41,15 +43,33 @@ export default {
     let titre = ''
     let price = ''
     let street = ''
-    const showAlert = () => {
+     const showAlert = () => {
       // Use sweetalert2
-        $swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
+      // Use sweetalert2
+        swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'YOUR REAL ESTATE IS ADDED SUCCESSFULLY',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+    const cancelAlert = () => {
+        swal.fire({
+        icon: 'error',
+        title: 'Cancel',
+        text: 'Something went wrong!',
+        // footer: '<a href="">Why do I have this issue?</a>'
     })
+    }
+    const backToHome = () => {
+        swal.fire({
+        icon: 'error',
+        title: 'Cancel',
+        text: 'Something went wrong!',
+        })
+        setTimeout(() =>router.push('/'), '1000' )
+        
     }
    
    
@@ -76,6 +96,9 @@ export default {
         })
         }  
     
+    // onMounted(() => {
+    //     showAlert();
+    // });
 </script>
 <template>
     
@@ -131,7 +154,7 @@ export default {
             <div class="flex gap-8">
                 <button @click="showAlert()" type="submit" value="addRealstate" class="bg-green-500 w-full font-medium text-white px-4 py-3 rounded-lg shadow-lg hover:bg-green-400">Submit</button>
                 <div class="mt-4"></div>
-                <button @click="cancelAlert" class="w-full font-medium text-green-500 px-4 py-3 rounded-lg border-2 border-green-500 hover:bg-green-400 hover:text-white hover:shadow-xl transition-all duration-500">Cancel</button>
+                <button @click="backToHome" class="w-full font-medium text-green-500 px-4 py-3 rounded-lg border-2 border-green-500 hover:bg-green-400 hover:text-white hover:shadow-xl transition-all duration-500">Cancel</button>
             </div>
             <!-- <Foooter /> -->
         </div>
