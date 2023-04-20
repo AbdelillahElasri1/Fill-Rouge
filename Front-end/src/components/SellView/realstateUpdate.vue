@@ -20,7 +20,7 @@
         swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'YOUR REAL ESTATE IS ADDED SUCCESSFULLY',
+            title: 'YOUR REAL ESTATE IS update SUCCESSFULLY',
             showConfirmButton: false,
             timer: 1500
         })
@@ -60,13 +60,19 @@
             titre : data.value.titre ,
             price : data.value.price ,
             street : data.value.street ,
-            image : data.value.image == '' ? img.value.image : data.value.image,
-            image1 : data.value.image1 == '' ? img.value.image1 : data.value.image1,
-            image2 : data.value.image2 == '' ? img.value.image2 : data.value.image2,
-            image3 : data.value.image3 == '' ? img.value.image3 : data.value.image3,
+            // image : data.value.image == '' ? img.value.image : data.value.image,
+            // image1 : data.value.image1 == '' ? img.value.image1 : data.value.image1,
+            // image2 : data.value.image2 == '' ? img.value.image2 : data.value.image2,
+            // image3 : data.value.image3 == '' ? img.value.image3 : data.value.image3,
+            image : data.value.image,
+            image1 : data.value.image1,
+            image2 : data.value.image2,
+            image3 :  data.value.image3,
         })
             .then((res) => {
                 console.log(res);
+                router.push('/listhome')
+                // console.log(route.push('/listhome'));
             })
     }
 
@@ -78,7 +84,8 @@
         data.value.price = response.data.price;
         data.value.street = response.data.street;
 
-        img = response.data;
+        img.value = response.data;
+        console.log(img.value.image);
         
         console.log(data.value);
     }
@@ -128,20 +135,6 @@
                 <!-- <label for="">photo</label> -->
                 <input type="file"  @change="onFileUploadFoor" name="image3" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" id="" placeholder="New york">
             </div>
-            
-            <!-- <div class="extraOutline p-4 bg-white w-max bg-whtie m-auto rounded-lg">
-                <div class="file_upload p-5 relative border-4 border-dotted border-gray-300 rounded-lg" style="width: 450px">
-                    <svg class="text-indigo-500 w-24 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" /></svg>
-                    <div class="input_field flex flex-col w-max mx-auto text-center">
-                        <label>
-                          <input required  class="text-sm cursor-pointer w-36 hidden" type="file" @change="onFileUpload" multiple />
-                            <div class="text bg-indigo-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-indigo-500">Select</div>
-                        </label>
-    
-                        <div class="title text-indigo-500 uppercase">or drop files here</div>
-                    </div>
-                </div>
-            </div> -->
             <div class="flex gap-8">
                 <button @click="showAlert()" type="submit" value="addRealstate" class="bg-green-500 w-full font-medium text-white px-4 py-3 rounded-lg shadow-lg hover:bg-green-400">Submit</button>
                 <div class="mt-4"></div>

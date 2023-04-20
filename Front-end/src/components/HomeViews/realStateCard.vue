@@ -6,17 +6,8 @@
     import { useRealstate } from '@/stores/realstate'
 
     const realstateStore = useRealstate()
+
     const router = useRouter()
-  //  const realstates = ref([])
-  //  const keyword = ref(null)
-    // const fetchData = () => {
-    //   axios.get('http://127.0.0.1:8000/api/all')
-    //   .then(response => {
-    //     realstateStore.realstates = response.data
-    //     console.log(response)
-    //   })
-    //   .catch((error) => console.log(error))
-    // }
     
     onMounted(() => {
       realstateStore.fetchData()
@@ -37,11 +28,10 @@
             <img :src="`http://localhost:8000/storage/${realstate.image}`" class="w-[250px] h-[200px]" alt="">
           </div>
           <div>
-            <strong class="pl-4">{{ realstate.price }}</strong>
+            <strong class="pl-4">${{ realstate.price }}</strong>
           </div>
           <div>
             <router-link :to="{name: 'show', params:{ id: realstate.id} }">
-              {{ realstate.id }}
               <p  class="pl-4">{{realstate.titre}}</p>
             
             </router-link>
@@ -53,7 +43,7 @@
         
         <!-- pagination start -->
 
-        <nav aria-label="Page navigation example" class="flex justify-center mb-6">
+        <!-- <nav aria-label="Page navigation example" class="flex justify-center mb-6" v-if="!(realstate.id).length < 10">
           <ul class="inline-flex -space-x-px">
             <li>
               <a href="#" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
@@ -77,7 +67,7 @@
               <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
             </li>
           </ul>
-        </nav>
+        </nav> -->
         <!-- <Foooter /> -->
     </div>
 </template>

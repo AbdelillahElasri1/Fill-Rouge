@@ -8,6 +8,7 @@ import dashboard from '../views/dashboard/dashboard.vue'
 import clientTable from '../components/dashboard/clientTable.vue'
 import socialTraffic from '../components/dashboard/socialTraffic.vue'
 import updateRealstate from '@/components/SellView/realstateUpdate.vue'
+import addRealstate from '@/components/SellView/sell.vue'
 
 
 
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: dashboard,
+    },
+    {
+      path: '/sell',
+      name: 'sell',
+      component: addRealstate,
     },
     {
       path: '/clientTable',

@@ -42,7 +42,7 @@ const realstateStore = useRealstate()
           </svg>
         </button>
       </div>
-      <div class="relative inline-flex">
+      <!-- <div class="relative inline-flex">
         <input type="number" placeholder="Min price" class="border border-gray-300 w-[150px] rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" name="" id="">
       </div>
       <div class="relative inline-flex">
@@ -75,9 +75,11 @@ const realstateStore = useRealstate()
             <option>Gray</option>
             <option>White</option>
           </select>
-      </div>
+      </div> -->
       <div>
-          <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Save Search</button>
+        <router-link to="/sell">
+          <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add Realstate</button>
+        </router-link>
       </div>
   </div>
 </template>
