@@ -1,29 +1,3 @@
-<!-- <script>
-
-export default {
-  methods: {
-    showAlert() {
-      // Use sweetalert2
-        this.$swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-    })
-    },
-    cancelAlert()
-    {
-        this.$swal.fire({
-        icon: 'error',
-        title: 'Cancel',
-        text: 'Something went wrong!',
-        // footer: '<a href="">Why do I have this issue?</a>'
-    })
-    }
-  },
-};
-</script> -->
 <script setup>
     import axios from 'axios'
     import { onMounted, reactive, ref } from 'vue'

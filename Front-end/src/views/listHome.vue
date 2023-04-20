@@ -51,7 +51,9 @@
               <p class="pl-4">{{realstate.street}}</p>
             </div>
             <div class="flex gap-8 justify-center mt-2">
+              <router-link :to="{name: 'updateRealstate', params:{ id: realstate.id} }">
                 <button class="bg-green-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-green-400">edit</button>
+              </router-link>
                 <button @click="deleteData(realstate.id)" class="bg-red-500 w-24  text-white px-4 py-3 rounded-lg  hover:bg-red-400">delete</button>
             </div>
           </div>

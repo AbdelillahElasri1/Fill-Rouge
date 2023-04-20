@@ -7,6 +7,7 @@ import listHome from '../views/listHome.vue'
 import dashboard from '../views/dashboard/dashboard.vue'
 import clientTable from '../components/dashboard/clientTable.vue'
 import socialTraffic from '../components/dashboard/socialTraffic.vue'
+import updateRealstate from '@/components/SellView/realstateUpdate.vue'
 
 
 
@@ -30,6 +31,11 @@ const router = createRouter({
       path: '/clientTable',
       name: 'clientTable',
       component: clientTable
+    },
+    {
+      path: '/update/:id',
+      name: 'updateRealstate',
+      component: updateRealstate,
     },
     {
       path: '/socialtraffic',

@@ -65,18 +65,30 @@ class RealstateController extends Controller
     public function update(Request $request , string $id)
     {
         
-        $update = Realstate::find($id);
-        $update['titre'] = $request->titre;
-        $update->price = $request->price;
-        $update->street = $request->street;
+        $realstate = Realstate::find($id);
+
+        $realstate->titre = $request->titre;
+        $realstate->price = $request->price;
+        $realstate->street = $request->street;
+
         if($request->hasFile('image')){
-            $update['image'] = $request->file('image')->store('image', 'public');
+            $realstate['image'] = $request->file('image')->store('image', 'public');
         }
-        $result = $update->update();
+        if($request->hasFile('image1')){
+            $realstate['image1'] = $request->file('image1')->store('image', 'public');
+        }
+        if($request->hasFile('image2')){
+            $realstate['image2'] = $request->file('image2')->store('image', 'public');
+        }
+        if($request->hasFile('image3')){
+            $realstate['image3'] = $request->file('image3')->store('image', 'public');
+        }
+
+        $result = $realstate->update();
         
 
         if ($result) {
-            return ['result' => 'Device updated successfully'];
+            return response($result);
         } else {
             return ['result' => 'Device not updated'];
         }

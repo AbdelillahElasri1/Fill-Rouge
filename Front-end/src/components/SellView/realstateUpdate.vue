@@ -1,108 +1,132 @@
-<!-- <script>
-
-export default {
-  methods: {
-    showAlert() {
-      // Use sweetalert2
-        this.$swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500
-    })
-    },
-    cancelAlert()
-    {
-        this.$swal.fire({
-        icon: 'error',
-        title: 'Cancel',
-        text: 'Something went wrong!',
-        // footer: '<a href="">Why do I have this issue?</a>'
-    })
-    }
-  },
-};
-</script> -->
 <script setup>
     import axios from 'axios'
     import { onMounted, reactive, ref } from 'vue'
     import { useRoute } from 'vue-router'
+    import navbar from '@/components/header.vue'
     import Foooter from '../footer.vue'
     import router from '../../router';
     import { useRealstate } from '@/stores/realstate'
+    import swal from 'sweetalert2';
+    window.Swal = swal;
+
 
     const realstateStore = useRealstate()
 
+    const route = useRoute()
 
-    
-    
-    let FILE = ref('')
-    let titre = ''
-    let price = ''
-    let street = ''
-   
-   
-
-
-    let onFileUpload =  (event) => {
-          FILE = event.target.files[0]
-        }
-    let onSubmit = () => {
-        // upload file
-        const formData = new FormData()
-        formData.append('image', FILE, FILE.name)
-        formData.append('image1', FILE, FILE.name)
-        formData.append('image2', FILE, FILE.name)
-        formData.append('image3', FILE, FILE.name)
-        formData.append('titre', titre)
-        formData.append('price', price)
-        formData.append('street', street)
-        console.log(formData);
-        axios.post('http://127.0.0.1:8000/api/add', formData, {
-        }).then((res) => {
-            console.log(res)
-            router.push('/')
+    const showAlert = () => {
+      // Use sweetalert2
+      // Use sweetalert2
+        swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'YOUR REAL ESTATE IS ADDED SUCCESSFULLY',
+            showConfirmButton: false,
+            timer: 1500
         })
-        }  
+    }
+
+    
+    const id = route.params.id
+
+    const data = ref({
+        titre : '',
+        price : '',
+        street : '',
+        image : '',
+        image1 : '',
+        image2 : '',
+        image3 : ''
+    });
+
+    const img = ref('');
+
+    let onFileUploadOne =  (event) => {
+        data.value.image = event.target.files[0].name
+    }
+    let onFileUploadTwo =  (event) => {
+        data.value.image1 = event.target.files[0].name
+    }
+    let onFileUploadThree =  (event) => {
+        data.value.image2 = event.target.files[0].name
+    }
+    let onFileUploadFoor =  (event) => {
+        data.value.image3 = event.target.files[0].name
+    }
+
+
+    let onSubmit = () => {
+        axios.put('http://127.0.0.1:8000/api/edit/'+ id, {
+            titre : data.value.titre ,
+            price : data.value.price ,
+            street : data.value.street ,
+            image : data.value.image == '' ? img.value.image : data.value.image,
+            image1 : data.value.image1 == '' ? img.value.image1 : data.value.image1,
+            image2 : data.value.image2 == '' ? img.value.image2 : data.value.image2,
+            image3 : data.value.image3 == '' ? img.value.image3 : data.value.image3,
+        })
+            .then((res) => {
+                console.log(res);
+            })
+    }
+
+
+    const getRealstate = async () => {
+        let response = await axios.get(`http://127.0.0.1:8000/api/getRealstate/`+ id)
+    
+        data.value.titre = response.data.titre;
+        data.value.price = response.data.price;
+        data.value.street = response.data.street;
+
+        img = response.data;
+        
+        console.log(data.value);
+    }
+
+
+    onMounted (() => {
+        realstateStore.fetchData()
+        getRealstate();
+    });
     
 </script>
 <template>
+        <navbar />
     
         <form @submit.prevent="onSubmit">
-        <div class="flex flex-col gap-6 ">
+        <div class="flex flex-col gap-6 items-center">
             <div>
                 <h1 class="text-5xl p-4 text-center font-bold from-blue-600 via-blue-400 to-blue-900 bg-gradient-to-r bg-clip-text text-transparent">Listing your home</h1>
             </div>
-            <div class="flex gap-8">
+            <div c lass="flex gap-8">
                 <div class="flex flex-col gap-2">
                     <label for="">Titre</label>
-                    <input type="text" required v-model="titre" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="House">
+                    <input type="text"  v-model="data.titre" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="House">
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="">Price</label>
-                    <input type="number" required v-model="price" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="$">
+                    <input type="number"  v-model="data.price" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="$">
                 </div>
             </div>
             <div class="flex flex-col gap-2">
                 <label for="">Street</label>
-                <input type="text" required v-model="street" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="600 Silliman St San Francisco, CA 94134">
+                <input type="text"  v-model="data.street" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="600 Silliman St San Francisco, CA 94134">
             </div>
             <div class="flex flex-col gap-2"> 
                 <label for="">photo</label>
-                <input type="file" required @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
+                <input type="file"  @change="onFileUploadOne" name="image" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" id="" placeholder="New york">
             </div>
             <div class="flex flex-col gap-2"> 
                 <!-- <label for="">photo</label> -->
-                <input type="file" required @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
+                <input type="file"  @change="onFileUploadTwo" name="image1" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" id="" placeholder="New york">
             </div>
             <div class="flex flex-col gap-2"> 
                 <!-- <label for="">photo</label> -->
-                <input type="file" required @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
+                <input type="file"  @change="onFileUploadThree" name="image2" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" id="" placeholder="New york">
             </div>
             <div class="flex flex-col gap-2"> 
                 <!-- <label for="">photo</label> -->
-                <input type="file" required @change="onFileUpload" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" name="" id="" placeholder="New york">
+                <input type="file"  @change="onFileUploadFoor" name="image3" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" id="" placeholder="New york">
             </div>
             
             <!-- <div class="extraOutline p-4 bg-white w-max bg-whtie m-auto rounded-lg">
@@ -119,7 +143,7 @@ export default {
                 </div>
             </div> -->
             <div class="flex gap-8">
-                <button @click="realstateStore.showAlert()" type="submit" value="addRealstate" class="bg-green-500 w-full font-medium text-white px-4 py-3 rounded-lg shadow-lg hover:bg-green-400">Submit</button>
+                <button @click="showAlert()" type="submit" value="addRealstate" class="bg-green-500 w-full font-medium text-white px-4 py-3 rounded-lg shadow-lg hover:bg-green-400">Submit</button>
                 <div class="mt-4"></div>
                 <button @click="cancelAlert" class="w-full font-medium text-green-500 px-4 py-3 rounded-lg border-2 border-green-500 hover:bg-green-400 hover:text-white hover:shadow-xl transition-all duration-500">Cancel</button>
             </div>
