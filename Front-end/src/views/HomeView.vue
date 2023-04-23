@@ -24,13 +24,13 @@
     <!-- components search end -->
     
   <!-- list home bar -->
-  <div class="flex justify-between h-[900px] ">     
-    <div class="relative w-1/2   ">
-      <iframe class="absolute top-0 left-0 w-full h-full "
+  <div class="flex flex-col justify-between h-[900px] sm:flex-row md:flex-row">     
+    <div class="relative h-1/2 sm:w-1/2 sm:h-full  ">
+      <iframe class="top-0 left-0 w-full h-full"
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12080.73732861526!2d-74.0059418!3d40.7127847!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM40zMDA2JzEwLjAiTiA3NMKwMjUnMzcuNyJX!5e0!3m2!1sen!2sus!4v1648482801994!5m2!1sen!2sus"
           frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
       </iframe>
-  </div>
+    </div>
     <realStateCard />
 </div>
 

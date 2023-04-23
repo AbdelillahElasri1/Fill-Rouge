@@ -75,7 +75,7 @@
     // });
 </script>
 <template>
-    
+    <div class=" flex items-center justify-center relative">
         <form @submit.prevent="onSubmit">
         <div class="flex flex-col gap-6 ">
             <div>
@@ -133,5 +133,6 @@
             <!-- <Foooter /> -->
         </div>
     </form>
+</div>
     
 </template>

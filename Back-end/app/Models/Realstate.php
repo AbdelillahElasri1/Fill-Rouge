@@ -10,4 +10,8 @@ class Realstate extends Model
     use HasFactory;
 
     protected $fillable = ['titre','price','street', 'image'];
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+    
 }
