@@ -62,6 +62,8 @@
         formData.append('titre', titre)
         formData.append('price', price)
         formData.append('street', street)
+        formData.append('user_id', localStorage.getItem('id'))
+        
         console.log(formData);
         axios.post('http://127.0.0.1:8000/api/add', formData, {
         }).then((res) => {

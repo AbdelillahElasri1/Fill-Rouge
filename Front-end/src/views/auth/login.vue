@@ -19,6 +19,7 @@
             
             if (response.data.success) {
                 localStorage.setItem('token', response.data.data.token)
+                localStorage.setItem('id', response.data.user.id)
                 if((response.data.user.role) == 0){
                     router.push('/')
                 } else {

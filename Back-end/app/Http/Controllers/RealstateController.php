@@ -24,6 +24,7 @@ class RealstateController extends Controller
         $realstate->titre = $request->titre;
         $realstate->price = $request->price;
         $realstate->street = $request->street;
+        $realstate->user_id = $request->user_id;
         
         if($request->hasFile('image')){
             $realstate['image'] = $request->file('image')->store('image', 'public');
