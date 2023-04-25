@@ -2,6 +2,7 @@
   import {useRouter} from 'vue-router'
   import SellForm from '../components/SellView/sell.vue'
   import navbar from '../components/header.vue'
+  import foooter from '@/components/footer.vue'
 
   const router = useRouter()
   const logout = () => {
@@ -14,6 +15,7 @@
   <div class="flex justify-center mt-8">
       <SellForm />
   </div>
+  <foooter />
 </template>
 
 <style>

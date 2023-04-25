@@ -1,0 +1,139 @@
+.container {
+    width: 90%;
+    margin: 20px;
+    padding: 20px;
+}
+
+/*base elements*/
+
+#eye {
+    /* position: absolute; */
+    top:26%;
+    left: 28%;
+    background-color: whitesmoke;
+    height: 250px;
+    width: 400px;
+    padding-left: 70px;
+    padding-top: 20px;
+    border-radius: 65% 0;
+  /*  transform: skew(-5deg);*/
+    border-top: solid black 15px;
+    border-left: solid black 5px;
+    border-right: solid black 7px;
+    border-bottom: solid black 2px;
+    border-bottom-left-radius: 5%;
+    border-top-right-radius: 1%;
+    
+    
+}
+
+#sharingan {
+    background-color: firebrick;
+    border-radius: 50%;
+    border: solid black;
+    height: 200px;
+    width: 200px;
+    /* position: absolute; */
+    top: 9%; 
+    left:25%;
+  animation: sharingans 1s linear infinite;
+    
+}
+
+#black-outline {
+    margin-top: 14%;
+    margin-left: 14%;
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border: solid black;
+    border-radius: 50%;
+   
+    
+}
+
+.tomoe-circle-1 {
+    position: absolute;
+    margin-top: 15%;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    border-radius: 50%;
+    
+}
+
+.triangle-1 {
+    height: 18px;
+    width: 10px;
+    background-color: black;
+    position: relative;
+    top: -9px;
+    left: 4px;
+    border-radius: 0% 145% 0% 90%;
+    transform: rotateZ(60deg) skewY(30deg);
+ 
+    
+}
+
+.tomoe-circle-2 {
+    position: absolute;
+    margin-top: 25%;  
+    right: -3%;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    border-radius: 50%;
+    transform: rotate(60deg);
+}
+
+.triangle-2 {
+     height: 18px;
+    width: 10px;
+    background-color: black;
+    position: relative;
+    top: -9px;
+    left: 4px;
+    border-radius: 0% 145% 0% 90%;
+    transform: rotateZ(60deg) skewY(30deg);
+    
+}
+
+.tomoe-circle-3 {
+    position: absolute;
+    margin-top: 90%;  
+    right: 45%;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    border-radius: 50%;
+    transform: rotate(160deg);
+}
+
+.triangle-3 {
+     height: 18px;
+    width: 10px;
+    background-color: black;
+    position: relative;
+    top: -9px;
+    left: 4px;
+    border-radius: 0% 145% 0% 90%;
+    transform: rotateZ(60deg) skewY(30deg);
+    
+}
+
+.pupil {
+    background-color: black;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    position: relative;
+    left: 35%;
+    top: 35%;
+    box-shadow: 0px 0px 70px black;    
+}
+
+/*keyframe animation*/
+@keyframes sharingans {  
+ 
+    to{transform: rotate(360deg);}
+}

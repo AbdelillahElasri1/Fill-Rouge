@@ -14,49 +14,12 @@
 
     const logout = () => {
         localStorage.removeItem('token')
-        router.push('/login')
+        router.push('/')
+        window.location.reload()
     }
 </script>
 <template>
     <header class="">
-        
-        <!-- <nav class="flex gap-6 items-center justify-between h-[60px] bg-[#5483ef] text-[#fff] align-middle leading-6" >
-            <div class="flex gap-10">
-                <div class="flex leading-10 pl-[15px] text-base">
-                <i class="fas fa-map-pin" style="margin-right: 3px;"></i>
-                REAL ESTATE
-                </div>
-                <div class=" ">
-                    <ul class="flex gap-6 align-middle leading-10">
-                    <li class=""><a href="/">Buy</a></li>
-                    <li class=""><a href="/about">Sell</a></li>
-                    <li><a href="/show">Mortgage</a></li>
-                    <li>Local Scoop</li>
-                    <li>More</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="flex gap-10">
-                <div class="savedNsearches">
-                    <ul class="flex gap-6 leading-10">
-                        <li><a href="/savedHome">Saved Homes</a></li>
-                        <li><a href="/listhome">List Home</a></li>
-                    </ul>
-                </div>
-                <div v-if="!token" class="mr-8">
-                    <router-link to="/login">
-                        <button class="flex-1 leading-10 bg-[#fff] text-center rounded-md min-w-[73px] border-black border text-black">Sign In</button>
-                    </router-link>
-                </div>
-                <div v-if="token" class="mr-8">
-                        <button @click="logout" class="flex-1 leading-10 bg-[#fff] text-center rounded-md min-w-[73px] border-black border text-black">logout</button>
-                </div>
-            </div>
-        </nav> -->
-
-
-
-
         <nav class="relative px-4 py-4 flex justify-between items-center bg-blue-500">
             <a class="text-3xl font-bold leading-none" href="#">
                 <svg class="h-10" alt="logo" viewBox="0 0 10240 10240">
@@ -78,25 +41,31 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>
                 </li>
-                <li><a class="text-sm text-white hover:text-gray-500" href="/about">Sell</a></li>
+                <li><a class="text-sm text-white hover:text-gray-500" href="/sell">Sell</a></li>
+                <li v-if="token" class="text-gray-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                    </svg>
+                </li>
+                <li v-if="token"><a class="text-sm text-white hover:text-gray-500" href="/listhome">list Home</a></li>
                 <li class="text-gray-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>
                 </li>
-                <li><a class="text-sm text-white hover:text-gray-500" href="/listhome">list Home</a></li>
+                <li v-if="token"><a class="text-sm text-white hover:text-gray-500" href="/listcommand">list Command</a></li>
                 <li class="text-gray-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>
                 </li>
-                <li><a class="text-sm text-white hover:text-gray-500" href="#">About us</a></li>
+                <li><a class="text-sm text-white hover:text-gray-500" href="/about">FAQ</a></li>
                 <li class="text-gray-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>
                 </li>
-                <li><a class="text-sm text-white hover:text-gray-500" href="#">Contact</a></li>
+                <li><a class="text-sm text-white hover:text-gray-500" href="/contact">Contact</a></li>
             </ul>
             <div v-if="!token">
                 <router-link to="/login">
@@ -129,16 +98,16 @@
                             <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/">Buy</a>
                         </li>
                         <li class="mb-1">
-                            <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/about">Sell</a>
+                            <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/sell">Sell</a>
                         </li>
                         <li class="mb-1">
                             <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/listhome">list Home</a>
                         </li>
                         <li class="mb-1">
-                            <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About</a>
+                            <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/about">FAQ</a>
                         </li>
                         <li class="mb-1">
-                            <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
+                            <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/contact">Contact</a>
                         </li>
                     </ul>
                 </div>

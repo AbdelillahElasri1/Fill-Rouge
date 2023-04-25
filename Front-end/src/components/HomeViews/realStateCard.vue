@@ -5,9 +5,10 @@
     import { useRouter } from 'vue-router'
     import { useRealstate } from '@/stores/realstate'
 
+    const router = useRouter()
+    
     const realstateStore = useRealstate()
 
-    const router = useRouter()
     
     onMounted(() => {
       realstateStore.fetchData()
@@ -23,7 +24,7 @@
 <template>
     <div class="flex gap-6 flex-wrap text-left bg-white justify-center m-8 p-4 w-2/3 scrollbar-hide overflow-y-scroll h-[900px]">
       <!-- card 1 -->
-        <div v-for="realstate in realstateStore.realstates" :key="realstate.id" class="w-[250px] h-[300px]">
+        <!-- <div v-for="realstate in realstateStore.realstates" :key="realstate.id" class="w-[250px] h-[300px]">
           <div>
             <img :src="`http://localhost:8000/storage/${realstate.image}`" class="w-[250px] h-[200px]" alt="">
           </div>
@@ -38,6 +39,25 @@
           </div>
           <div>
             <p class="pl-4">{{realstate.street}}</p>
+          </div>
+        </div> -->
+
+
+        <div v-for="realstate in realstateStore.realstates" :key="realstate.id" class=" bg-gray-100 flex items-center">
+          <div class="container h-[388px] w-[322px] mx-auto p-9 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300">
+            <img class="rounded-xl w-[250px] h-[200px]" :src="`http://localhost:8000/storage/${realstate.image}`" alt="realstate" />
+            <div class="flex justify-between items-center">
+              <div>
+                <h1 class="mt-5 text-2xl font-semibold">{{realstate.titre}}</h1>
+                <p class="mt-2">${{ realstate.price }}</p>
+                <p class="mt-2">${{ realstate.street }}</p>
+              </div>
+              <div>
+                <router-link :to="{name: 'show', params:{ id: realstate.id} }">
+                  <button class="text-white text-md font-semibold bg-green-400 py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 ">show</button>
+                </router-link>
+              </div>
+            </div>
           </div>
         </div>
         

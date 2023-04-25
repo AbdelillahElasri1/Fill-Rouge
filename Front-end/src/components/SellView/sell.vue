@@ -18,8 +18,6 @@
     let price = ''
     let street = ''
      const showAlert = () => {
-      // Use sweetalert2
-      // Use sweetalert2
         swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -63,11 +61,11 @@
         formData.append('price', price)
         formData.append('street', street)
         formData.append('user_id', localStorage.getItem('id'))
-        
         console.log(formData);
         axios.post('http://127.0.0.1:8000/api/add', formData, {
         }).then((res) => {
-            console.log(res)
+            console.log(res);
+            // localStorage.setItem('real_id', res.data.id)
             router.push('/')
         })
         }  

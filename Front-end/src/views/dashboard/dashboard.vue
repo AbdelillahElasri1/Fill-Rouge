@@ -5,6 +5,7 @@
     import clientTable from '../../components/dashboard/clientTable.vue'
     import socialtraffic from '../../components/dashboard/socialTraffic.vue'
     import recentactivite from '../../components/dashboard/recentActivite.vue'
+    import '@/assets/sharingan.css'
 </script>
   
 <template>
@@ -28,70 +29,75 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
     
           <!-- Social Traffic -->
-            <socialtraffic />
+            <!-- <socialtraffic /> -->
           <!-- ./Social Traffic -->
     
           <!-- Recent Activities -->
-            <recentactivite />
+            <!-- <recentactivite /> -->
           <!-- ./Recent Activities -->
         </div>
       
     
         <!-- Client Table -->
-          <clientTable />
-        <!-- ./Client Table -->
+          <!-- <clientTable /> -->
+          <div class="flex justify-center items-center">
+            <div class="">
+              <div class="container">
     
-        <!--  Contact Form -->
-        <!-- <div class="mt-8 mx-4">
-          <div class="grid grid-cols-1 md:grid-cols-2">
-            <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
-              <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">Get in touch</h1>
-              <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">Fill in the form to submit any query</p>
-    
-              <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <div class="ml-4 text-md tracking-wide font-semibold w-40">Dhaka, Street, State, Postal Code</div>
-              </div>
-    
-              <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <div class="ml-4 text-md tracking-wide font-semibold w-40">+880 1234567890</div>
-              </div>
-    
-              <div class="flex items-center mt-4 text-gray-600 dark:text-gray-400">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <div class="ml-4 text-md tracking-wide font-semibold w-40">info@demo.com</div>
+                <div id="eye">
+                <!--the whites of the eye + eyelash-->
+                <div id="sharingan">
+                  <!--the sharingan eye-->
+                  <div id="black-outline"> <!--black sharingan border-->
+                    <div class="tomoe-circle-1">  
+                      <div class="triangle-1"></div>  <!--tomoe 1 -->
+                    </div>
+                    <div class="tomoe-circle-2">  <!--tomoe 2-->
+                      <div class="triangle-2"></div>
+                    </div>
+                    <div class="tomoe-circle-3">  <!--tomoe 3 -->
+                      <div class="triangle-3"></div>
+                    </div>
+                    <div class="pupil">   <!--pupil -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <form class="p-6 flex flex-col justify-center">
-              <div class="flex flex-col">
-                <label for="name" class="hidden">Full Name</label>
-                <input type="name" name="name" id="name" placeholder="Full Name" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
-              </div>
+            <div class="flex flex-col justify-center items-center">
+              <!-- <svg class="w-60 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <g> <path fill="none" d="M0 0H24V24H0z"/> <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zm0 1c1.018 0 1.985.217 2.858.608L13.295 7.17C12.882 7.06 12.448 7 12 7c-2.761 0-5 2.239-5 5 0 1.38.56 2.63 1.464 3.536L7.05 16.95l-.156-.161C5.72 15.537 5 13.852 5 12c0-3.866 3.134-7 7-7zm6.392 4.143c.39.872.608 1.84.608 2.857 0 1.933-.784 3.683-2.05 4.95l-1.414-1.414C16.44 14.63 17 13.38 17 12c0-.448-.059-.882-.17-1.295l1.562-1.562zm-2.15-2.8l1.415 1.414-3.724 3.726c.044.165.067.338.067.517 0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2c.179 0 .352.023.517.067l3.726-3.724z"/> </g> </svg> -->
+              <h1 class="text-5xl p-4 text-center font-bold from-blue-600 via-blue-400 to-blue-900 bg-gradient-to-r bg-clip-text text-transparent">Welcome Elasri </h1>
+              <!-- <svg class="w-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <g> <path fill="none" d="M0 0H24V24H0z"/> <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 2c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zm0 1c1.018 0 1.985.217 2.858.608L13.295 7.17C12.882 7.06 12.448 7 12 7c-2.761 0-5 2.239-5 5 0 1.38.56 2.63 1.464 3.536L7.05 16.95l-.156-.161C5.72 15.537 5 13.852 5 12c0-3.866 3.134-7 7-7zm6.392 4.143c.39.872.608 1.84.608 2.857 0 1.933-.784 3.683-2.05 4.95l-1.414-1.414C16.44 14.63 17 13.38 17 12c0-.448-.059-.882-.17-1.295l1.562-1.562zm-2.15-2.8l1.415 1.414-3.724 3.726c.044.165.067.338.067.517 0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2c.179 0 .352.023.517.067l3.726-3.724z"/> </g> </svg> -->
+            </div>
+            <div>
+              <div class="container">
     
-              <div class="flex flex-col mt-2">
-                <label for="email" class="hidden">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
+                <div id="eye">
+                <!--the whites of the eye + eyelash-->
+                <div id="sharingan">
+                  <!--the sharingan eye-->
+                  <div id="black-outline"> <!--black sharingan border-->
+                    <div class="tomoe-circle-1">  
+                      <div class="triangle-1"></div>  <!--tomoe 1 -->
+                    </div>
+                    <div class="tomoe-circle-2">  <!--tomoe 2-->
+                      <div class="triangle-2"></div>
+                    </div>
+                    <div class="tomoe-circle-3">  <!--tomoe 3 -->
+                      <div class="triangle-3"></div>
+                    </div>
+                    <div class="pupil">   <!--pupil -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-    
-              <div class="flex flex-col mt-2">
-                <label for="tel" class="hidden">Number</label>
-                <input type="tel" name="tel" id="tel" placeholder="Telephone Number" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
-              </div>
-    
-              <button type="submit" class="md:w-32 bg-blue-600 dark:bg-gray-100 text-white dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-500 dark:hover:bg-gray-200 transition ease-in-out duration-300">Submit</button>
-            </form>
+            </div>
           </div>
-        </div>  -->
-        <!-- ./Contact Form -->
-      </div>
+        <!-- ./Client Table -->
+    
+            </div>
     </div>
   </div>    
 

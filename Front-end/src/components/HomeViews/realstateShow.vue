@@ -1,9 +1,24 @@
 <script setup>
     import navbar from '../header.vue'
+    import foooter from '@/components/footer.vue'
     import axios from 'axios'
     import { ref, reactive, onMounted, computed } from 'vue'
     import { useRoute } from 'vue-router'
     import { useRealstate } from '@/stores/realstate'
+    import router from '../../router'
+    import swal from 'sweetalert2';
+    window.Swal = swal;
+
+    // sweet alert
+    const showAlert = () => {
+        swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your Command sended successfully',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
 
     const realstateStore = useRealstate() 
 
@@ -11,6 +26,7 @@
 
     // const id = ref('');
 
+    //get RealEstate function
     const realstate = ref([])
     const getRealstate = async () => {
         const id = route.params.id
@@ -20,7 +36,35 @@
         console.log(realstateStore.realstateShow.image)
     }
 
-    
+    // toogle function
+    const awesome = ref(false)
+
+    function toggle() {
+    awesome.value = !awesome.value
+    }
+
+
+    //REquest a tour function
+    let email = ''
+    let firstname = ''
+
+    let onSubmit = () => {
+        // upload file
+        const id = route.params.id
+        const formData = new FormData()
+        formData.append('email', email)
+        formData.append('firstname', firstname)
+        formData.append('realstate_id', id)
+        formData.append('user_id', localStorage.getItem('id'))
+        console.log(formData);
+        axios.post('http://127.0.0.1:8000/api/create', formData, {
+        }).then((res) => {
+            console.log(res);
+            window.location.reload()
+        })
+        }  
+
+    // onmounted function
 
     onMounted(() => {
       getRealstate();
@@ -64,7 +108,7 @@
                     </span>
                     <strong class="text-4xl text-blue-500 text-center">Realstate</strong>
                 </div>
-                <div>
+                <!-- <div>
                     <ul class="flex gap-4 text-blue-500">
                             <div class="flex gap-1">
                                 <span class="material-symbols-outlined">
@@ -93,11 +137,11 @@
                             
                         
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="flex flex-col gap-4 mt-4 ">
                 <div>
-                    <p><strong class="text-2xl text-black">$269,0003</strong> bd2 | ba1 | 342 , {{ realstateStore.realstateShow.titre }}</p>
+                    <p><strong class="text-2xl text-black">{{ realstateStore.realstateShow.titre }}</strong> bd2 | ba1 | 342  </p>
                 </div>
                 <div>
                     <p><strong class="text-xl">Street :</strong> <span class="text-base">{{realstateStore.realstateShow.street}}</span></p>
@@ -109,7 +153,7 @@
             <div class=" mt-6">
                 <ul class="flex gap-4 justify-between">
                     <li>
-                        <button class="bg-blue-500 w-[300px] h-[60px] rounded hover:bg-blue-700">
+                        <button @click="toggle" class="bg-blue-500 w-[300px] h-[60px] rounded hover:bg-blue-700">
                             <div>
                                 <p class="text-xl text-white">Request a tour</p>
                                     <span class="text-white">as early as today at 11:00 am</span>
@@ -118,12 +162,30 @@
                         </button>
                     </li>
                     <li>
+                        <router-link to="/contact">
                         <button class="bg-white text-blue-500 border-solid border border-blue-500 w-[152px] h-[60px] rounded hover:bg-blue-500 hover:text-white">
                             Contact Agence
                         </button>
+                    </router-link>
                     </li>
                 </ul>
             </div>
+            <div v-if="awesome" class="flex justify-center gap-4 mt-4">
+                <hr>
+                <form class="flex justify-center gap-2" @submit.prevent="onSubmit" action="">
+                    <div>
+                        <input v-model="firstname" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" type="text" placeholder="Name">
+                    </div> 
+                    <div>
+                        <input v-model="email" class="flex-auto p-4 block  rounded-lg font-medium outline-none border focus:border-green-500 focus:text-green-500" type="email" placeholder="email">
+                    </div> 
+                    <div>
+                        <button @click="showAlert" class="text-white w-[82px] p-4 text-md font-semibold bg-blue-500 py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 " type="submit">Send</button>
+                    </div>
+                </form>
+                <hr>
+            </div>
+            <div v-else></div>
             <div class="overview mt-4">
                 <div>
                     <hr>
@@ -136,4 +198,5 @@
             </div>
         </div>
     </div>
+    <foooter />
 </template>

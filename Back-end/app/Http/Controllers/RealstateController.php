@@ -40,7 +40,13 @@ class RealstateController extends Controller
         }
         //$request->file('image')->store('image');
         $result = $realstate->save();
-        return response()->json(['message' => 'realstate is added successfully']);
+        $response = [
+            
+            'id' => $realstate->user_id,
+            'message' => 'realstate added successfully'
+        ];
+
+        return response()->json($response, 200);
         // if ($result) {
         //     return [
         //         'message' => 'realstate is added successfully'

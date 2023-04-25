@@ -18,6 +18,6 @@ import navbarbuttom from './components/footer.vue'
   
   
   <RouterView />
-  <navbarbuttom />
+  <!-- <navbarbuttom /> -->
 </template>
 

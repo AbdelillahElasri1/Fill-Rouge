@@ -1,5 +1,11 @@
 <script setup>
 	   import { ref, reactive, onMounted } from 'vue'
+     import headerdashboard from '../../components/dashboard/header.vue'
+    import sidebardashboard from '../../components/dashboard/sidebar.vue'
+    import statistics from '../../components/dashboard/statistics.vue'
+    import clientTable from '../../components/dashboard/clientTable.vue'
+    import socialtraffic from '../../components/dashboard/socialTraffic.vue'
+    import recentactivite from '../../components/dashboard/recentActivite.vue'
     // import Foooter from '../footer.vue'
     import axios from 'axios';
 
@@ -24,8 +30,39 @@
    
 
 </script>
+  
 <template>
-	<div class="mt-4 mx-4">
+	<!-- dashboard start -->
+		
+<div x-data="setup()" :class="{ 'dark': isDark }">
+    <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
+      <!-- header start -->
+      <headerdashboard />
+      <!-- header end -->
+      <!-- Sidebar -->
+          <sidebardashboard />
+      <!-- ./Sidebar -->
+    
+      <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
+    
+        <!-- Statistics Cards -->
+            <statistics />
+        <!-- ./Statistics Cards -->
+    
+        <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
+    
+          <!-- Social Traffic -->
+            <!-- <socialtraffic /> -->
+          <!-- ./Social Traffic -->
+    
+          <!-- Recent Activities -->
+            <!-- <recentactivite /> -->
+          <!-- ./Recent Activities -->
+        </div>
+      
+    
+        <!-- Client Table -->
+        <div class="mt-4 mx-4">
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
               <table class="w-full">
@@ -113,4 +150,12 @@
             </div>
           </div>
         </div>
+        <!-- ./Client Table -->
+    
+            </div>
+    </div>
+  </div>    
+
+  
+	<!-- dashboard end -->
 </template>

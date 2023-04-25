@@ -103,7 +103,7 @@
         <form @submit.prevent="onSubmit">
         <div class="flex flex-col gap-6 items-center">
             <div>
-                <h1 class="text-5xl p-4 text-center font-bold from-blue-600 via-blue-400 to-blue-900 bg-gradient-to-r bg-clip-text text-transparent">Listing your home</h1>
+                <h1 class="text-5xl p-4 text-center font-bold from-blue-600 via-blue-400 to-blue-900 bg-gradient-to-r bg-clip-text text-transparent">Update your home</h1>
             </div>
             <div c lass="flex gap-8">
                 <div class="flex flex-col gap-2">

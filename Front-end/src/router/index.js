@@ -9,6 +9,12 @@ import clientTable from '../components/dashboard/clientTable.vue'
 import socialTraffic from '../components/dashboard/socialTraffic.vue'
 import updateRealstate from '@/components/SellView/realstateUpdate.vue'
 import addRealstate from '@/components/SellView/sell.vue'
+import contact from '@/views/contactUs.vue'
+import about from '@/views/aboutUs.vue'
+import listcommand from '@/views/listcommand.vue'
+import commandDashboard from '@/components/dashboard/commandDashboard.vue'
+import listclient from '@/components/dashboard/ListClient.vue'
+
 
 
 
@@ -19,9 +25,9 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta:{
-        requiresAuth: true
-      }
+      // meta:{
+      //   requiresAuth: true
+      // }
     },
     {
       path: '/dashboard',
@@ -29,10 +35,30 @@ const router = createRouter({
       component: dashboard,
     },
     {
-      path: '/sell',
-      name: 'sell',
-      component: addRealstate,
+      path: '/listclient',
+      name: 'listclient',
+      component: listclient,
     },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: contact,
+    },
+    {
+      path: '/commandDashboard',
+      name: 'commandDashboard',
+      component: commandDashboard,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: about,
+    },
+    // {
+    //   path: '/sell',
+    //   name: 'sell',
+    //   component: addRealstate,
+    // },
     {
       path: '/clientTable',
       name: 'clientTable',
@@ -54,9 +80,17 @@ const router = createRouter({
       component: listHome
     },
     {
+      path: '/listcommand',
+      name: 'listcommand',
+      component: listcommand
+    },
+    {
       path: '/show/:id',
       name: 'show',
-      component: showRealstate
+      component: showRealstate,
+      meta:{
+        requiresAuth: true
+      }
     },
     //login route
     {
@@ -73,8 +107,8 @@ const router = createRouter({
       component: register
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/sell',
+      name: 'sell',
       meta:{
         requiresAuth: true
       },
