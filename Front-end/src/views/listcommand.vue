@@ -20,6 +20,7 @@
       realstateStore.fetchCommand()
     })
 </script>
+h
 <template>
     <headerr />
     <div>
