@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "hi hi guys"
 echo "all needed command for push a project in gihtub : enjoy guys"
 commitMessage=$1
 branchName=$2
